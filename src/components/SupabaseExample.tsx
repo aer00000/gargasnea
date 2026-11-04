@@ -1,7 +1,6 @@
-import { onValue, push, ref } from 'firebase/database';
 import { useEffect, useState } from 'react';
 
-import { db } from '../firebase';
+import { supabase } from '../supabaseClient';
 import styles from './FirebaseExample.module.css';
 
 interface Student {
@@ -10,7 +9,7 @@ interface Student {
   grade: string;
 }
 
-export default function FirebaseExample() {
+export default function SupabaseExample() {
   const [students, setStudents] = useState<Student[]>([]);
   const [name, setName] = useState('');
   const [error, setError] = useState<string | null>(null);
@@ -21,32 +20,44 @@ export default function FirebaseExample() {
       return;
     }
     try {
-      await push(ref(db, 'students'), { name, grade: 'A+' });
+      const { error: insertError } = await supabase
+        .from('students')
+        .insert([{ name, grade: 'A+' }]);
+
+      if (insertError) {
+        throw insertError;
+      }
       setName('');
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to write to the database.');
     }
   }
 
-  // 2. Read data, live: onValue keeps `students` in sync with the database
+  // 2. Read data and subscribe to real-time changes
   useEffect(() => {
-    const studentsRef = ref(db, 'students');
-    const unsubscribe = onValue(
-      studentsRef,
-      (snapshot) => {
-        const data = snapshot.val() as Record<string, Omit<Student, 'id'>> | null;
-        const list = data
-          ? Object.entries(data).map(([id, value]) => ({ id, ...value }))
-          : [];
-        setStudents(list);
-        setError(null);
-      },
-      (err) => {
-        setError(err.message);
-      }
-    );
+    const fetchStudents = async () => {
+      const { data, error: fetchError } = await supabase.from('students').select('*');
 
-    return unsubscribe;
+      if (fetchError) {
+        setError(fetchError.message);
+      } else {
+        setStudents(data);
+        setError(null);
+      }
+    };
+
+    void fetchStudents();
+
+    const channel = supabase
+      .channel('schema-db-changes')
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'students' }, () => {
+        void fetchStudents();
+      })
+      .subscribe();
+
+    return () => {
+      void supabase.removeChannel(channel);
+    };
   }, []);
 
   return (

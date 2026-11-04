@@ -11,7 +11,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "firebase": "^12.18.0",
+    "@supabase/supabase-js": "^2.119.0",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },

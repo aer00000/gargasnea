@@ -2,7 +2,7 @@ import styles from './App.module.css';
 import heroImg from './assets/hero.png';
 import reactLogo from './assets/react.svg';
 import viteLogo from './assets/vite.svg';
-import FirebaseExample from './components/FirebaseExample';
+import SupabaseExample from './components/SupabaseExample';
 
 function App() {
   return (
@@ -14,23 +14,22 @@ function App() {
           <img src={viteLogo} className={styles.vite} alt="Vite logo" />
         </div>
         <div>
-          <h1>React + Vite + Firebase</h1>
+          <h1>React + Vite + Supabase</h1>
           <p>
             A starter template wiring up <code>React</code> and{' '}
-            <code>Firebase Realtime Database</code>, served with <code>Vite</code> for
-            instant HMR.
+            <code>Supabase Postgres</code>, served with <code>Vite</code> for instant HMR.
           </p>
         </div>
 
         <div className={styles.demoCard}>
           <p className={styles.demoHint}>
-            Follow the <strong>Firebase Setup</strong> guide under{' '}
-            <strong>Project</strong> on the course website to connect your own Firebase
-            project. Once connected, add a name below - it&apos;s written to your Realtime
+            Follow the <strong>Supabase Setup</strong> guide under{' '}
+            <strong>Project</strong> on the course website to connect your own Supabase
+            project. Once connected, add a name below - it&apos;s written to your Postgres
             Database under <code>students</code> and streamed back live with{' '}
-            <code>src/components/FirebaseExample.tsx</code>.
+            <code>src/components/SupabaseExample.tsx</code>.
           </p>
-          <FirebaseExample />
+          <SupabaseExample />
         </div>
       </section>
 
@@ -57,15 +56,8 @@ function App() {
               </a>
             </li>
             <li>
-              <a
-                href="https://firebase.google.com/docs/database"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <svg className={styles.buttonIcon} role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#firebase-icon" />
-                </svg>
-                Firebase
+              <a href="https://supabase.com/docs" target="_blank" rel="noreferrer">
+                Supabase
               </a>
             </li>
           </ul>
@@ -95,14 +87,11 @@ function App() {
             </li>
             <li>
               <a
-                href="https://github.com/firebase/firebase-js-sdk"
+                href="https://github.com/supabase/supabase-js"
                 target="_blank"
                 rel="noreferrer"
               >
-                <svg className={styles.buttonIcon} role="presentation" aria-hidden="true">
-                  <use href="/icons.svg#firebase-icon" />
-                </svg>
-                Firebase SDK
+                Supabase SDK
               </a>
             </li>
           </ul>
