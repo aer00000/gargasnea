@@ -72,7 +72,12 @@
 }
 
 .signuptext {
-    color: white;
-    text-align: center;
-    padding-top: 10px;
+  color: white;
+  text-align: center;
+  padding-top: 10px;
+}
+
+.finger {
+  text-align: center;
+  font-size: 100px;
 }
