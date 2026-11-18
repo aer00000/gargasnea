@@ -19,6 +19,7 @@
   border: 1px solid #3a3a3a;
   font-family: 'Inter', system-ui, sans-serif;
   box-shadow: 5px 5px;
+  z-index: 1;
 }
 
 .title {
@@ -80,4 +81,42 @@
 .finger {
   text-align: center;
   font-size: 100px;
+}
+
+.checkboxLabel {
+  color: white;
+}
+
+.bubbles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.bubble {
+  position: absolute;
+  bottom: -20px;
+  width: 20px;
+  height: 20px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 100%;
+  animation: rise linear infinite backwards;
+}
+
+@keyframes rise {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-105vh);
+    opacity: 0;
+  }
 }

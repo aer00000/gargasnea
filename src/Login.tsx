@@ -8,15 +8,42 @@ interface LoginProps {
   type?: string;
 }
 
+const bubbligabubblor = [
+  { id: 1, left: '7%', duration: '6s', delay: '0s' },
+  { id: 2, left: '20%', duration: '8s', delay: '2s' },
+  { id: 3, left: '27%', duration: '5.5s', delay: '1s' },
+  { id: 4, left: '38%', duration: '7.5s', delay: '3.5s' },
+  { id: 5, left: '50%', duration: '6.7s', delay: '0.5s' },
+  { id: 6, left: '58%', duration: '8.5s', delay: '2.5s' },
+  { id: 7, left: '67%', duration: '5.8s', delay: '4s' },
+  { id: 8, left: '76%', duration: '7.2s', delay: '1.5s' },
+  { id: 9, left: '83%', duration: '6.2s', delay: '3s' },
+  { id: 10, left: '92%', duration: '7.8s', delay: '0.67s' }
+];
+
 type pages = 'login' | 'signup' | 'password';
 
 // Huvudsida för inloggning / skapa konton
 function Login() {
-
   const [currentView, setCurrentView] = useState<pages>('login');
 
   return (
     <div className={styles.page}>
+      {/* bubbligabubblor hälsningar ttssa */}
+      <div className={styles.bubbles}>
+        {bubbligabubblor.map((bubble) => (
+          <span
+            key={bubble.id}
+            className={styles.bubble}
+            style={{
+              left: bubble.left,
+              animationDuration: bubble.duration,
+              animationDelay: bubble.delay
+            }}
+          />
+        ))}
+      </div>
+
       <div className={styles.middle}>
         <h1 className={styles.title}>GARGASNEA🍻</h1>
 
@@ -75,6 +102,11 @@ function SignupPage({ onNavigate }: PageProps) {
       <TextField inputLabel={'Email'} placeholderText={' gargasnea@gmail.com'} />
       <TextField inputLabel={'Lösenord'} placeholderText={' ******'} type="password" />
 
+      <label className={styles.checkboxLabel}>
+        <input type="checkbox" className={styles.checkbox} />
+        LÄS TOS(det finns ingen)
+      </label>
+
       <Buttons textLabel={'Skapa konto'} />
 
       <p className={styles.signuptext}>
@@ -94,7 +126,6 @@ function PasswordPage({ onNavigate }: PageProps) {
   return (
     <>
       <p className={styles.signuptext}>Skulle inte ha glömt lösenordet dumhuvud!</p>
-
       <h1 className={styles.finger}>🖕</h1>
 
       <Buttons textLabel={'Gå tillbaka'} onClick={() => onNavigate('login')} />
