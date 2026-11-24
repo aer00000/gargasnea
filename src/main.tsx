@@ -1,10 +1,9 @@
-import './index.css';
+import './login.module.css';
 
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
-import App from './App.tsx';
-import TopNav from './components/TopNav.tsx';
+import Login from './Login.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -13,7 +12,6 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
-    <TopNav />
+    <Login />
   </StrictMode>
 );
