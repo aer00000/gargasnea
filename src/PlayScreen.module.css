@@ -1,0 +1,152 @@
+.mainScreen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.liquid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    animation: moveUp 3.5s ease-in-out forwards;
+}
+
+.beer {
+    width: 100%;
+    height: 120vh;
+    background: linear-gradient(#AD7B2F, #AD7B2F, #DFC1A4);
+}
+
+.foam {
+    display: block;
+    width: 100%;
+    transform-origin: bottom center;
+    animation: moveFoam 3.5s ease-out forwards;
+    z-index: 2;
+    /* position: absolute;
+    top: -5%;
+    left: -10%;
+    width: 150%;
+    max-width: none;
+    display: block;
+    transform-origin: top center;
+    animation: moveFoam 3.5s ease-out forwards; */
+}
+
+.bubble {
+    position: absolute;
+    bottom: -2vw;
+    left: var(--left);
+    z-index: 1;
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle at 30% 30%,
+        rgba(255, 255, 255, 0.8),
+        rgba(255, 255, 255, 0.25)
+    );
+    pointer-events: none;
+    animation: rise var(--duration) ease-in var(--delay) infinite;
+}
+
+.buttonContainer {
+    /* position: absolute center; */
+    position: float;
+    z-index: 10;
+    /* background-color: #232221; */
+    width: 25vw;
+    height: 35vw;
+    /* box-shadow: 5px 5px 5px black;
+    border-radius: 1vw; */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4vh;
+
+    opacity: 0;
+    pointer-events: none;
+    animation: fadeIn 0.5s ease-out 2.3s forwards;
+}
+
+.lobbyButton {
+    position: relative;
+    width: 75%;
+    height: 25%;
+    background-color: #232221;
+    border: none;
+    border-radius: 2vw;
+    cursor: pointer;
+    font-size: 2vw;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: #AD7B2F;
+}
+
+.lobbyButton:hover {
+    animation: hoverColor 0.25s forwards;
+}
+
+@keyframes moveUp {
+    from {
+        transform: translateY(120vh);
+    }
+    to {
+        transform: translateY(-15vh);
+    }
+}
+
+@keyframes moveFoam {
+    from {
+        transform: translateX(-10vw) scale(1);
+    }
+    to {
+        transform: translateX(10vw) scale(2.5);
+    }
+}
+
+@keyframes rise {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+    15% {
+        opacity: 0.85;
+    }
+
+    100% {
+        transform: translate(-1vw, -105vh);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(2vh);
+        pointer-events: none;
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        pointer-events: auto;
+    }
+}
+
+@keyframes hoverColor {
+    0% {
+        background-color: #232221;
+    }
+
+    100% {
+        background-color: #151414;
+    }
+}
