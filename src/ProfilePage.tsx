@@ -41,7 +41,7 @@ const MOCK_POSTS: Post[] = Array.from({ length: 12 }, (_, i) => {
 });
 
 export function ProfilePage() {
-  const [isOwnProfile] = useState(false);
+  const [isOwnProfile] = useState(true);
 
   const [isFollowing, setIsFollowing] = useState(false);
   const [followers, setFollowers] = useState(340);
