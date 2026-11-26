@@ -8,7 +8,7 @@ const BUBBLE_COUNT = 75;
 const BUBBLES = Array.from({ length: BUBBLE_COUNT }, (_, index) => ({
   id: `bubble-${String(index)}`,
   left: `${(Math.random() * 100).toFixed(1)}%`,
-  size: `${(0.25 + Math.random() * 0.5).toFixed(2)}vw`,
+  size: `${(0.5 + Math.random() * 1).toFixed(2)}vw`,
   duration: `${(2.2 + Math.random() * 1.8).toFixed(2)}s`,
   delay: `${(Math.random() * 2.5).toFixed(2)}s`
 }));
