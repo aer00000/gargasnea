@@ -45,7 +45,7 @@ function Login() {
       </div>
 
       <div className={styles.middle}>
-        <h1 className={styles.title}>GARGASNEA🍻</h1>
+        <h1 className={styles.title}>🍻 GARGASNEA 🍻</h1>
 
         {/* 3. Rendera rätt komponent baserat på state */}
         {currentView === 'login' && <LoginPage onNavigate={setCurrentView} />}
