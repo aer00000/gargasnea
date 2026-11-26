@@ -4,6 +4,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Login from './Login.tsx';
+import ProfilePage from './ProfilePage.tsx';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -13,5 +14,6 @@ if (!rootElement) {
 createRoot(rootElement).render(
   <StrictMode>
     <Login />
+    <ProfilePage />
   </StrictMode>
 );
